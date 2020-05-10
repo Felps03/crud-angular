@@ -1,1 +1,27 @@
-<p>list works!</p>
+<div class="card">
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Data de Nascimento</th>
+          <th scope="col">Endereço</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients; let i = index">
+          <td>{{client.name}}</td>
+          <td>{{client.cpf}}</td>
+          <td>{{client.cellphone}}</td>
+          <td>{{client.birthday}}</td>
+          <td>{{client.andress}}</td>
+          <td><button class="btn btn-success" type="button" (click)="update(i)">Atualizar</button> <button class="btn btn-danger"
+              (click)="delete(client)">Deletar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

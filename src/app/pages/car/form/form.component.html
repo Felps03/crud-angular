@@ -1,1 +1,34 @@
-<p>form works!</p>
+<div class="card">
+  <div class="card-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group">
+        <label for="InputName">Nome</label>
+        <input type="text" class="form-control" name="InputName" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label for="InputCPF">CPF</label>
+        <input type="text" class="form-control" name="InputCPF" [(ngModel)]="cpf">
+      </div>
+      <div class="form-group">
+        <label for="InputCellphone">Telefone</label>
+        <input type="text" class="form-control" name="InputCellphone" [(ngModel)]="cellphone">
+      </div>
+      <div class="form-group">
+        <label for="InputBirthday">Data de Nascimento</label>
+        <input type="date" class="form-control" name="InputBirthday" [(ngModel)]="birthday">
+      </div>
+
+      <div class="form-group">
+        <label for="InputAndress">Endereço</label>
+        <input type="text" class="form-control" name="InputAndress" [(ngModel)]="andress">
+      </div>
+
+      <div class="form-group">
+        <label for="InputCar">Marca e Modelo do Veículo</label>
+        <input type="text" class="form-control" name="InputCar" [(ngModel)]="car">
+      </div>
+
+      <button class="btn btn-primary">Salvar</button>
+    </form>
+  </div>
+</div>

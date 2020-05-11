@@ -1,27 +1,45 @@
-<div class='card'>
-  <div class='card-body'>
-    <table class='table table-striped'>
-      <thead>
-        <tr>
-          <th scope='col'>Nome</th>
-          <th scope='col'>CPF</th>
-          <th scope='col'>Telefone</th>
-          <th scope='col'>Data de Nascimento</th>
-          <th scope='col'>Endereço</th>
-          <th scope='col'>Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let client of clients; let i = index'>
-          <td>{{client.name}}</td>
-          <td>{{client.cpf}}</td>
-          <td>{{client.cellphone}}</td>
-          <td>{{client.birthday}}</td>
-          <td>{{client.address}}</td>
-          <td><button class='btn btn-success' type='button' (click)='update(client.id)'>Atualizar</button> <button
-              class='btn btn-danger' (click)='delete(client)'>Deletar</button></td>
-        </tr>
-      </tbody>
-    </table>
+<section class="carListing  mt-5" id="carListing">
+  <div class="container">
+    <div class="client-form">
+      <h2 class="client-form-title">Listagem de Usuários <i class="fas fa-users"></i></h2>
+      <div class="client-form-info mt-5">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="float-right">
+              <button type="button" class="btn btn-client-form mb-3" routerLink="/form" value="Inserir">Inserir <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-client text-center">
+                  <tr>
+                    <th scope='col'>Nome</th>
+                    <th scope='col'>CPF</th>
+                    <th scope='col'>Telefone</th>
+                    <th scope='col'>Data de Nascimento</th>
+                    <th scope='col'>Endereço</th>
+                    <th scope='col'>Ação</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr *ngFor='let client of clients; let i = index'>
+                    <th scope="row">{{client.name}}</th>
+                    <td>{{client.cpf}}</td>
+                    <td>{{client.cellphone}}</td>
+                    <td>{{client.birthday}}</td>
+                    <td>{{client.address}}</td>
+                    <td>
+                      <button type="button" class="btn btn-client-update" value="Atualizar"
+                        (click)='update(client.id)'>Atualizar <i class="fas fa-car"></i></button>
+                      <button type="button" class="btn btn-client-delete" value="Deletar"
+                        (click)='delete(client)'>Deletar <i class="fas fa-car"></i></button>
+                    </td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

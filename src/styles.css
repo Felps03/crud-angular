@@ -1,1 +1,306 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  box-sizing: border-box;
+  background: #f8f8f8;
+}
+
+.header {
+  height: 100vh;
+  background-image: linear-gradient(
+      to right,
+      rgb(63, 13, 18, 0.8),
+      rgb(63, 13, 18, 0.08)
+    ),
+    url('../src/assets/imgs/background_img2.jpg');
+  background-size: cover;
+  background-position: top;
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+}
+
+.header-intro {
+  margin-top: -100px;
+}
+
+.header-main-text .header-intro-text {
+  background-image: url('../src/assets/imgs/1.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+  padding: 18px 40px;
+  animation: moveInBottom 2s ease-out;
+}
+.header-main-text .header-intro-text span {
+  font-size: 20px;
+  font-family: 'Paytone One', sans-serif;
+  font-weight: 400;
+  color: #fff;
+}
+h3.header-branding {
+  font-size: 100px;
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 100px;
+  margin-bottom: 27px;
+  color: #fff;
+  font-family: 'Paytone One', sans-serif;
+  animation-name: fontMoveLeft;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15),
+    0px 24px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1);
+}
+
+h4.header-sub-branding {
+  font-size: 60px;
+  font-family: 'Righteous', cursive;
+  color: #f2c64d;
+  position: relative;
+  margin-top: -30px;
+  animation: fontMoveRight 2s ease-out;
+  text-shadow: 0px 3px 0px #5d4605, 0px 14px 10px rgba(255, 255, 255, 0.15),
+    0px 24px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1);
+}
+
+.divisor {
+  border-bottom: 4px solid #333;
+  margin: 1px 44%;
+}
+.section-heading .icon .fa-car {
+  background: #8d5f61;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 7px 3px;
+  color: white;
+}
+.badge-rent {
+  background-color: #a7e37a;
+  color: white;
+}
+.badge-selling {
+  background-color: #2d384c;
+  color: white;
+}
+
+@keyframes fontMoveLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes fontMoveRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-see-car {
+  background: #ffd35a;
+  border: 1px solid #ffd35a;
+  color: white;
+}
+.btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom 2s ease-out 1s;
+  animation-fill-mode: backwards;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* FORM */
+.client-form {
+  background: white;
+  padding: 75px 75px;
+  border-radius: 23px;
+  box-shadow: 5px 5px 5px rgba(102, 102, 102, 0.04);
+  margin-bottom: 50px;
+}
+
+.client-form-title {
+  font-size: 30px;
+  font-family: 'Paytone One', sans-serif;
+  font-weight: 400;
+  color: #ffd35a;
+}
+.form-label-name {
+  font-family: 'Paytone One', sans-serif;
+  font-weight: 400;
+  color: #ffd35a;
+  font-size: 13px;
+}
+.btn {
+  color: #fff;
+  border: 1px solid #f6eac7;
+  font-size: 15px;
+  box-shadow: 5px 5px 5px rgba(102, 102, 102, 0.04);
+}
+.btn-client-form {
+  background: #ffe7a4;
+  color: #666;
+  border: 1px solid #f6eac7;
+}
+.btn-client-form:hover {
+  background: #ffd35a;
+}
+
+.btn-client-delete {
+  background: #c53c1c;
+  border: 1px solid #c53c1c;
+}
+
+.btn-client-delete:hover {
+  background: #cd5437;
+  border: 1px solid #cd5437;
+  color: #fff;
+}
+
+.btn-client-update {
+  background: #78bd5fc7;
+  border: 1px solid #78bd5fc7;
+}
+.btn-client-update:hover {
+  background: #5db53dc7;
+  border: 1px solid #5db53dc7;
+  color: #fff;
+}
+/* TABLE */
+.table {
+  width: 100%;
+}
+.table td,
+.table th {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.table .thead-client th {
+  color: #ffd35a;
+  border-color: #e9ecef;
+  background-color: #dadada29;
+  font-family: 'Paytone One', sans-serif;
+  text-shadow: 0px 5px 10px rgba(16, 16, 16, 0.15);
+}
+
+.table.align-items-center td,
+.table.align-items-center th {
+  vertical-align: middle;
+}
+
+.table thead th {
+  font-size: 1.15rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e9ecef;
+  border-bottom-color: rgb(233, 236, 239);
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table td,
+.table th {
+  font-size: 1.15rem;
+  white-space: nowrap;
+}
+.table th {
+  font-weight: 600;
+}
+.table td,
+.table th {
+  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  vertical-align: top;
+  border-top: 1px solid #e9ecef;
+  border-top-color: rgb(233, 236, 239);
+}

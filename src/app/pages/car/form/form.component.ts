@@ -87,7 +87,6 @@ export class FormComponent implements OnInit {
 
   onSubmit(form) {
     const formValues = form.value;
-
     if (this.id) {
       const userData = this.clientService.listClients();
       const userID = Number(this.id);

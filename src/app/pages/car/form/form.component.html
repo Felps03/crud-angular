@@ -1,34 +1,46 @@
-<div class='card'>
-  <div class='card-body'>
-    <form name='form' [formGroup]='clientsForm' (ngSubmit)='onSubmit(clientsForm)'>
-      <div class='form-group'>
-        <label for='InputName'>Nome</label>
-        <input type='text' class='form-control' name='InputName' formControlName='name'>
+<section class="carListing  mt-5" id="carListing">
+  <div class="container">
+    <div class="client-form">
+      <h2 class="client-form-title">Formulário de Cadastro <i class="fas fa-car-side"></i></h2>
+      <div class="client-form-info mt-5">
+        <form name="clientForm" [formGroup]='clientsForm' (ngSubmit)='onSubmit(clientsForm)'>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label-name" for="name">Nome</label>
+                <input type="text" name="name" class="form-control form-control-lg" formControlName='name' />
+              </div>
+              <div class="form-group">
+                <label class="form-label-name" for="cpf">CPF</label>
+                <input type="text" name="cpf" class="form-control form-control-lg" formControlName='cpf' />
+              </div>
+              <div class="form-group">
+                <label class="form-label-name" for="cellphone">Telefone</label>
+                <input type="text" name="cellphone" class="form-control form-control-lg" formControlName='cellphone' />
+              </div>
+              <div class="form-group">
+                <label class="form-label-name" for="birthdate">Data de Nascimento</label>
+                <input type="date" name="birthdate" class="form-control form-control-lg" formControlName='birthday' />
+              </div>
+              <div class="form-group">
+                <label class="form-label-name" for="address">Endereço</label>
+                <input type="text" name="address" class="form-control form-control-lg" formControlName='address' />
+              </div>
+              <div class="form-group">
+                <label class="form-label-name" for="car">Carro</label>
+                <input type="text" name="car" class="form-control form-control-lg" formControlName='car' />
+              </div>
+              <div class="form-group float-right">
+                <button type="submit" class="btn btn-client-form " value="Submit">Salvar <i class="fas fa-car"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <img src="../../../../assets/imgs/undraw_by_my_car_ttge.svg" width="480px" alt="imagem de carro">
+            </div>
+          </div>
+        </form>
       </div>
-      <div class='form-group'>
-        <label for='InputCPF'>CPF</label>
-        <input type='text' class='form-control' name='InputCPF' formControlName='cpf'>
-      </div>
-      <div class='form-group'>
-        <label for='InputCellphone'>Telefone</label>
-        <input type='text' class='form-control' name='InputCellphone' formControlName='cellphone'>
-      </div>
-      <div class='form-group'>
-        <label for='InputBirthday'>Data de Nascimento</label>
-        <input type='date' class='form-control' name='InputBirthday' formControlName='birthday'>
-      </div>
-
-      <div class='form-group'>
-        <label for='InputAddress'>Endereço</label>
-        <input type='text' class='form-control' name='InputAddress' formControlName='address'>
-      </div>
-
-      <div class='form-group'>
-        <label for='InputCar'>Marca e Modelo do Veículo</label>
-        <input type='text' class='form-control' name='InputCar' formControlName='car'>
-      </div>
-
-      <button class='btn btn-primary'>Salvar</button>
-    </form>
+    </div>
   </div>
-</div>
+</section>

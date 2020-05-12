@@ -4,6 +4,7 @@ import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import {CarPagesRoutes} from './car.routing';
 
@@ -17,8 +18,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     RouterModule.forChild(CarPagesRoutes),
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TextMaskModule
   ],
-  exports: [ListComponent, FormComponent]
+  exports: [ListComponent, FormComponent, TextMaskModule]
 })
 export class CarModule { }

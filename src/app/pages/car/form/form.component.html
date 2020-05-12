@@ -8,30 +8,35 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-label-name" for="name">Nome</label>
-                <input type="text" name="name" class="form-control form-control-lg" formControlName='name' />
+                <input type="text" name="name" class="form-control form-control-lg" formControlName='name'
+                  [textMask]="{mask: validation.text.pattern, guide:false}" />
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="cpf">CPF</label>
-                <input type="text" name="cpf" class="form-control form-control-lg" formControlName='cpf' />
+                <input type="text" name="cpf" class="form-control form-control-lg" formControlName='cpf'
+                  [textMask]="{mask: validation.cpf.pattern}" />
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="cellphone">Telefone</label>
-                <input type="text" name="cellphone" class="form-control form-control-lg" formControlName='cellphone' />
+                <input type="text" name="cellphone" class="form-control form-control-lg" formControlName='cellphone'
+                  [textMask]="{mask: validation.cellphone.pattern}" />
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="birthdate">Data de Nascimento</label>
-                <input type="date" name="birthdate" class="form-control form-control-lg" formControlName='birthday' />
+                <input type="text" name="birthdate" class="form-control form-control-lg" formControlName='birthday'
+                  [textMask]="{mask: validation.date.pattern}" />
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="address">Endereço</label>
-                <input type="text" name="address" class="form-control form-control-lg" formControlName='address' />
+                <input type="text" name="address" class="form-control form-control-lg" formControlName='address'
+                  [textMask]="{mask: validation.text.pattern, guide:false}" />
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="car">Carro</label>
                 <input type="text" name="car" class="form-control form-control-lg" formControlName='car' />
               </div>
-              <div class="form-group float-right">
-                <button type="submit" class="btn btn-client-form " value="Submit">Salvar <i class="fas fa-car"></i>
+              <div class="form-group float-right" >
+                <button type="submit" class="btn btn-client-form" value="Submit" [disabled]="!clientsForm.valid" >Salvar <i class="fas fa-car"></i>
                 </button>
               </div>
             </div>

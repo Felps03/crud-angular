@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../service/client.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import * as mask from '../../../core/validators/masks';
+
+import { CustomValidators } from 'src/app/core/validators/custom-validators';
 
 @Component({
   selector: 'app-form',
@@ -12,6 +15,9 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class FormComponent implements OnInit {
   id: number;
   clientsForm: FormGroup;
+  validation: any;
+  formStatus: string;
+
   constructor(
     public clientService: ClientService,
     private router: Router,
@@ -21,49 +27,15 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.clientsForm = this.formBuilder.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(40),
-        ],
-      ],
-      cpf: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(40),
-        ],
-      ],
-      cellphone: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(14),
-        ],
-      ],
-      birthday: ['', [Validators.required]],
-      address: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(40),
-        ],
-      ],
-      car: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(40),
-        ],
-      ],
+      name: ['', CustomValidators.validateName],
+      cpf: ['', CustomValidators.validateCPF],
+      cellphone: ['', CustomValidators.validateCellphone],
+      birthday: ['', CustomValidators.validateDate],
+      address: ['', CustomValidators.validateName],
+      car: ['', CustomValidators.validateName],
     });
     this.getParams();
+    this.validation = mask.default;
   }
 
   getParams() {
@@ -86,34 +58,37 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(form) {
-    const formValues = form.value;
-    if (this.id) {
-      const userData = this.clientService.listClients();
-      const userID = Number(this.id);
-      const allClients = Object.keys(userData).map((i) => userData[i]);
+    this.formStatus = this.clientsForm.status;
+    if (this.formStatus === 'VALID') {
+      const formValues = form.value;
+      if (this.id) {
+        const userData = this.clientService.listClients();
+        const userID = Number(this.id);
+        const allClients = Object.keys(userData).map((i) => userData[i]);
 
-      const index = allClients.findIndex((user) => {
-        return user.id === Number(userID);
-      });
+        const index = allClients.findIndex((user) => {
+          return user.id === Number(userID);
+        });
 
-      const userFormControl = this.clientsForm.controls;
+        const userFormControl = this.clientsForm.controls;
 
-      for (const key in userFormControl) {
-        if (userFormControl.hasOwnProperty(key)) {
-          allClients[index][key] = userFormControl[key].value;
+        for (const key in userFormControl) {
+          if (userFormControl.hasOwnProperty(key)) {
+            allClients[index][key] = userFormControl[key].value;
+          }
         }
+        this.clientService.editClient(allClients);
+      } else {
+        this.clientService.addClients({
+          name: formValues.name,
+          address: formValues.address,
+          birthday: formValues.birthday,
+          cpf: formValues.cpf,
+          cellphone: formValues.cellphone,
+          car: formValues.car,
+        });
       }
-      this.clientService.editClient(allClients);
-    } else {
-      this.clientService.addClients({
-        name: formValues.name,
-        address: formValues.address,
-        birthday: formValues.birthday,
-        cpf: formValues.cpf,
-        cellphone: formValues.cellphone,
-        car: formValues.car,
-      });
+      this.router.navigateByUrl('/');
     }
-    this.router.navigateByUrl('/');
   }
 }

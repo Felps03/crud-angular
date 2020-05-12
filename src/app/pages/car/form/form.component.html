@@ -53,7 +53,7 @@
               </div>
               <div class="form-row">
                 <div class="col-md-4 mb-3">
-                  <label class="form-label-name">Vehicle</label>
+                  <label class="form-label-name">Veiculo</label>
                   <select id="type" name="type" class="form-control" (change)="onSelectType($event.target.value)"
                     formControlName='vehicles' required>
                     <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="col-md-4 mb-3">
-                  <label class="form-label-name">Brand</label>
+                  <label class="form-label-name">Marca</label>
                   <select (change)="onSelectBrand($event.target.value)" id="brand" name="brand" formControlName='brands'
                     class="form-control" require >
                     <option *ngFor="let brand of brands" value="{{brand.codigo}}" [selected]="brand.codigo">
@@ -70,7 +70,7 @@
 
                 </div>
                 <div class="col-md-4 mb-3">
-                  <label class="form-label-name">Model</label>
+                  <label class="form-label-name">Modelo</label>
                   <select id="model" name="model" class="form-control" formControlName='models' required>
                     <option *ngFor="let model of models" value="{{model.codigo}}" [selected]="model.codigo">
                       {{model.nome}}</option>

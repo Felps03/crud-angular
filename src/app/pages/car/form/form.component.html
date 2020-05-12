@@ -9,55 +9,77 @@
               <div class="form-group">
                 <label class="form-label-name" for="name">Nome</label>
                 <input type="text" name="name" class="form-control form-control-lg" formControlName='name'
-                  [textMask]="{mask: validation.text.pattern, guide:false}" />
+                  [textMask]="{mask: validation.text.pattern, guide:false}"
+                  [ngClass]="(submitBtnStatus && clientsForm.get('name').errors) ? 'is-invalid' : '' " />
+                <div class="text-danger" *ngIf="(submitBtnStatus && clientsForm.get('name').errors)">
+                  Nome inválido
+                </div>
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="cpf">CPF</label>
                 <input type="text" name="cpf" class="form-control form-control-lg" formControlName='cpf'
-                  [textMask]="{mask: validation.cpf.pattern}" />
+                  [textMask]="{mask: validation.cpf.pattern}"
+                  [ngClass]="(submitBtnStatus && clientsForm.get('cpf').errors) ? 'is-invalid' : '' " />
+                <div class="text-danger" *ngIf="(submitBtnStatus && clientsForm.get('cpf').errors)">
+                  CPF inválido
+                </div>
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="cellphone">Telefone</label>
                 <input type="text" name="cellphone" class="form-control form-control-lg" formControlName='cellphone'
-                  [textMask]="{mask: validation.cellphone.pattern}" />
+                  [textMask]="{mask: validation.cellphone.pattern}"
+                  [ngClass]="(submitBtnStatus && clientsForm.get('cellphone').errors) ? 'is-invalid' : '' " />
+                <div class="text-danger" *ngIf="(submitBtnStatus && clientsForm.get('cellphone').errors)">
+                  Telefone inválido
+                </div>
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="birthdate">Data de Nascimento</label>
                 <input type="text" name="birthdate" class="form-control form-control-lg" formControlName='birthday'
-                  [textMask]="{mask: validation.date.pattern}" />
+                  [textMask]="{mask: validation.date.pattern}"
+                  [ngClass]="(submitBtnStatus && clientsForm.get('birthday').errors) ? 'is-invalid' : '' " />
+                <div class="text-danger" *ngIf="(submitBtnStatus && clientsForm.get('birthday').errors)">
+                  Data de Nascimento inválido
+                </div>
               </div>
               <div class="form-group">
                 <label class="form-label-name" for="address">Endereço</label>
                 <input type="text" name="address" class="form-control form-control-lg" formControlName='address'
-                  [textMask]="{mask: validation.text.pattern, guide:false}" />
+                  [textMask]="{mask: validation.text.pattern, guide:false}"
+                  [ngClass]="(submitBtnStatus && clientsForm.get('address').errors) ? 'is-invalid' : '' " />
+                <div class="text-danger" *ngIf="(submitBtnStatus && clientsForm.get('address').errors)">
+                  Endereço inválido
+                </div>
               </div>
               <div class="form-row">
                 <div class="col-md-4 mb-3">
                   <label class="form-label-name">Vehicle</label>
-                  <select id="type" name="type" class="form-control" (change)="onSelectType($event.target.value)" formControlName='vehicles' required>
+                  <select id="type" name="type" class="form-control" (change)="onSelectType($event.target.value)"
+                    formControlName='vehicles' required>
                     <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
-                  </select>                  
+                  </select>
                 </div>
 
                 <div class="col-md-4 mb-3">
                   <label class="form-label-name">Brand</label>
-                  <select (change)="onSelectBrand($event.target.value)" id="brand" name="brand"  formControlName='brands'
-                    class="form-control" required>
-                    <option *ngFor="let brand of brands" value="{{brand.codigo}}"
-                      [selected]="brand.codigo">{{brand.nome}}</option>
+                  <select (change)="onSelectBrand($event.target.value)" id="brand" name="brand" formControlName='brands'
+                    class="form-control" require >
+                    <option *ngFor="let brand of brands" value="{{brand.codigo}}" [selected]="brand.codigo">
+                      {{brand.nome}}</option>
                   </select>
-                 
+
                 </div>
                 <div class="col-md-4 mb-3">
                   <label class="form-label-name">Model</label>
-                  <select  id="model" name="model" class="form-control"  formControlName='models' required >
-                    <option *ngFor="let model of models" value="{{model.codigo}}"
-                      [selected]="model.codigo">{{model.nome}}</option>
-                  </select>                 
+                  <select id="model" name="model" class="form-control" formControlName='models' required>
+                    <option *ngFor="let model of models" value="{{model.codigo}}" [selected]="model.codigo">
+                      {{model.nome}}</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group float-right">
-                <button type="submit" class="btn btn-primary btn-starcar" [ngClass]="(submitBtnStatus==true)?'disabled':''" >Salvar <i class="fas fa-car"></i>
+                <button type="submit" class="btn btn-primary btn-starcar"
+                  [ngClass]="(submitBtnStatus==true)?'disabled':''">Salvar <i class="fas fa-car"></i>
                 </button>
               </div>
             </form>

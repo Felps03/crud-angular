@@ -4,6 +4,7 @@ import { FormComponent } from './form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TextMaskModule } from 'angular2-text-mask';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -16,7 +17,8 @@ describe('FormComponent', () => {
         FormsModule,
         RouterTestingModule,
         ReactiveFormsModule,
-        TextMaskModule
+        TextMaskModule,
+        HttpClientTestingModule
       ]
     })
     .compileComponents();

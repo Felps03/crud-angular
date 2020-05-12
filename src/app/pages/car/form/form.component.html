@@ -3,9 +3,9 @@
     <div class="client-form">
       <h2 class="client-form-title">Formulário de Cadastro <i class="fas fa-car-side"></i></h2>
       <div class="client-form-info mt-5">
-        <form name="clientForm" [formGroup]='clientsForm' (ngSubmit)='onSubmit(clientsForm)'>
-          <div class="row">
-            <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <form name="clientForm" [formGroup]='clientsForm' (ngSubmit)='onSubmit(clientsForm)'>
               <div class="form-group">
                 <label class="form-label-name" for="name">Nome</label>
                 <input type="text" name="name" class="form-control form-control-lg" formControlName='name'
@@ -31,20 +31,41 @@
                 <input type="text" name="address" class="form-control form-control-lg" formControlName='address'
                   [textMask]="{mask: validation.text.pattern, guide:false}" />
               </div>
-              <div class="form-group">
-                <label class="form-label-name" for="car">Carro</label>
-                <input type="text" name="car" class="form-control form-control-lg" formControlName='car' />
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label class="form-label-name">Vehicle</label>
+                  <select id="type" name="type" class="form-control" (change)="onSelectType($event.target.value)" formControlName='vehicles' required>
+                    <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+                  </select>                  
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="form-label-name">Brand</label>
+                  <select (change)="onSelectBrand($event.target.value)" id="brand" name="brand"  formControlName='brands'
+                    class="form-control" required>
+                    <option *ngFor="let brand of brands" value="{{brand.codigo}}"
+                      [selected]="brand.codigo">{{brand.nome}}</option>
+                  </select>
+                 
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label-name">Model</label>
+                  <select  id="model" name="model" class="form-control"  formControlName='models' required >
+                    <option *ngFor="let model of models" value="{{model.codigo}}"
+                      [selected]="model.codigo">{{model.nome}}</option>
+                  </select>                 
+                </div>
               </div>
-              <div class="form-group float-right" >
-                <button type="submit" class="btn btn-client-form" value="Submit" [disabled]="!clientsForm.valid" >Salvar <i class="fas fa-car"></i>
+              <div class="form-group float-right">
+                <button type="submit" class="btn btn-primary btn-starcar" [ngClass]="(submitBtnStatus==true)?'disabled':''" >Salvar <i class="fas fa-car"></i>
                 </button>
               </div>
-            </div>
-            <div class="col-md-6">
-              <img src="../../../../assets/imgs/undraw_by_my_car_ttge.svg" width="480px" alt="imagem de carro">
-            </div>
+            </form>
           </div>
-        </form>
+          <div class="col-md-6">
+            <img src="../../../../assets/imgs/undraw_by_my_car_ttge.svg" width="480px" alt="imagem de carro">
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../service/client.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import * as mask from '../../../core/validators/masks';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import * as mask from '../../../core/validators/masks';
+import { DataServiceService } from '../service/data-service.service';
 import { CustomValidators } from 'src/app/core/validators/custom-validators';
+import { ClientService } from '../service/client.service';
 
 @Component({
   selector: 'app-form',
@@ -17,12 +18,18 @@ export class FormComponent implements OnInit {
   clientsForm: FormGroup;
   validation: any;
   formStatus: string;
+  type: string;
+  brands: any;
+  models: any;
+  types: any = [{ id: 'carros', name: 'Carro' } , { id: 'motos', name: 'Moto' } , { id: 'caminhoes', name: 'Caminhão' }];
+  submitBtnStatus = false;
 
   constructor(
     public clientService: ClientService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dataServiceService: DataServiceService
   ) {}
 
   ngOnInit() {
@@ -32,10 +39,15 @@ export class FormComponent implements OnInit {
       cellphone: ['', CustomValidators.validateCellphone],
       birthday: ['', CustomValidators.validateDate],
       address: ['', CustomValidators.validateName],
-      car: ['', CustomValidators.validateName],
+      vehicles: ['', Validators.required],
+      brands: ['', Validators.required],
+      models: ['', Validators.required],
     });
     this.getParams();
     this.validation = mask.default;
+    this.clientsForm.valueChanges.subscribe(() => {
+      this.submitBtnStatus = false;
+    });
   }
 
   getParams() {
@@ -57,9 +69,40 @@ export class FormComponent implements OnInit {
     }
   }
 
+  onSelectType(idType) {
+    this.type = idType;
+    this.getAllBrands(idType);
+  }
+
+  onSelectBrand(idBrand) {
+    this.models = null;
+    this.getAllModels(this.type, idBrand);
+  }
+
+  getAllBrands(type) {
+    try {
+      this.dataServiceService.getAllBrands(type).subscribe((data) => {
+        this.brands = data;
+      });
+    } catch (error) {
+      return error.stack;
+    }
+  }
+
+  private getAllModels(type, idBrand) {
+    try {
+      this.dataServiceService.getAllModels(type, idBrand).subscribe((data) => {
+        this.models = data.modelos;
+      });
+    } catch (error) {
+      return error.stack;
+    }
+  }
+
   onSubmit(form) {
     this.formStatus = this.clientsForm.status;
     if (this.formStatus === 'VALID') {
+      this.submitBtnStatus = false;
       const formValues = form.value;
       if (this.id) {
         const userData = this.clientService.listClients();
@@ -90,5 +133,6 @@ export class FormComponent implements OnInit {
       }
       this.router.navigateByUrl('/');
     }
+    this.submitBtnStatus = true;
   }
 }

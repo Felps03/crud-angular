@@ -138,55 +138,7 @@ h4.header-sub-branding {
   }
 }
 
-.btn:link,
-.btn:visited {
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s;
-  position: relative;
-}
 
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
-
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
-
-.btn-see-car {
-  background: #ffd35a;
-  border: 1px solid #ffd35a;
-  color: white;
-}
-.btn::after {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s;
-}
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
-
-.btn-animated {
-  animation: moveInBottom 2s ease-out 1s;
-  animation-fill-mode: backwards;
-}
 
 @media screen and (prefers-reduced-motion: reduce) {
   html {
@@ -215,41 +167,7 @@ h4.header-sub-branding {
   color: #ffd35a;
   font-size: 13px;
 }
-.btn {
-  color: #fff;
-  border: 1px solid #f6eac7;
-  font-size: 15px;
-  box-shadow: 5px 5px 5px rgba(102, 102, 102, 0.04);
-}
-.btn-client-form {
-  background: #ffe7a4;
-  color: #666;
-  border: 1px solid #f6eac7;
-}
-.btn-client-form:hover {
-  background: #ffd35a;
-}
 
-.btn-client-delete {
-  background: #c53c1c;
-  border: 1px solid #c53c1c;
-}
-
-.btn-client-delete:hover {
-  background: #cd5437;
-  border: 1px solid #cd5437;
-  color: #fff;
-}
-
-.btn-client-update {
-  background: #78bd5fc7;
-  border: 1px solid #78bd5fc7;
-}
-.btn-client-update:hover {
-  background: #5db53dc7;
-  border: 1px solid #5db53dc7;
-  color: #fff;
-}
 /* TABLE */
 .table {
   width: 100%;
@@ -303,4 +221,81 @@ h4.header-sub-branding {
   vertical-align: top;
   border-top: 1px solid #e9ecef;
   border-top-color: rgb(233, 236, 239);
+}
+
+
+/* BUTTONS */
+.disabled {
+  opacity: 0.35;
+  cursor: not-allowed !important;
+}
+
+.btn-starcar{
+  font-size: 15px;
+  box-shadow: 5px 5px 5px rgba(102, 102, 102, 0.04);
+}
+
+.btn-see-car {
+  background: #ffd35a;
+  border: 1px solid #ffd35a;
+  color: white;
+}
+
+.btn-client-delete {
+  background: #c53c1c;
+  border: 1px solid #c53c1c;
+}
+
+.btn-client-delete:hover {
+  background: #cd5437;
+  border: 1px solid #cd5437;
+  color: #fff;
+}
+
+.btn-client-update {
+  background: #78bd5fc7;
+  border: 1px solid #78bd5fc7;
+}
+.btn-client-update:hover {
+  background: #5db53dc7;
+  border: 1px solid #5db53dc7;
+  color: #fff;
+}
+
+.btn-starcar-list{
+  color: #fff;
+  font-size: 15px;
+  box-shadow: 5px 5px 5px rgba(102, 102, 102, 0.04);
+}
+
+.btn-see-car {
+  background: #ffd35a;
+  border: 1px solid #ffd35a;
+  color: white;
+}
+
+.btn-animated {
+  animation: moveInBottom 2s ease-out 1s;
+  animation-fill-mode: backwards;
+}
+
+.btn-animated:link,
+.btn-animated:visited {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn-client-form {
+  background: #ffe7a4;
+  color: #000;
+  border: 1px solid #f6eac7;
+}
+.btn-client-form:hover {
+  background: #ffd35a;
 }
